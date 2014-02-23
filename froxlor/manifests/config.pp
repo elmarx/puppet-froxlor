@@ -1,6 +1,6 @@
 class froxlor::config inherits froxlor {
 
-  exec { 'install':
+  exec { 'froxlor-install':
      command => "/usr/bin/curl 'http://localhost/froxlor/install/install.php' \
      -H 'Content-Type: application/x-www-form-urlencoded' \
      --data 'mysql_host=${mysql_host}&\
@@ -24,15 +24,14 @@ class froxlor::config inherits froxlor {
      creates => '/var/www/froxlor/lib/userdata.inc.php'
   }
 
-  include "froxlor::apache"
-
   cron { 'froxlor':
       command => '/usr/bin/nice -n 5 /usr/bin/php5 -q /var/www/froxlor/scripts/froxlor_master_cronjob.php',
       user => 'root',
       minute => '*/5',
   }
 
-
+  include "froxlor::apache"
+  include "froxlor::ftp"
 
 
 }
