@@ -14,4 +14,9 @@ class froxlor::apache inherits froxlor::config {
     mode => 1777,
     require => File['/var/customers'],
   }
+
+  file { '/etc/logrotate.d/froxlor':
+    mode => 644,
+    source => "puppet:///modules/froxlor/logrotate",
+  }
 }
