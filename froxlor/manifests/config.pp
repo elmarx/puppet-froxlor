@@ -30,7 +30,7 @@ class froxlor::config inherits froxlor {
       minute => '*/5',
   }
 
-  include "froxlor::apache"
+  include "froxlor::http"
   include "froxlor::ftp"
 
 

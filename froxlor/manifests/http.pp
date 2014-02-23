@@ -1,4 +1,4 @@
-class froxlor::apache inherits froxlor::config {
+class froxlor::http inherits froxlor::config {
 
   file { '/var/customers':
     ensure => directory,
