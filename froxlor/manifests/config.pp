@@ -30,10 +30,19 @@ class froxlor::config inherits froxlor {
       minute => '*/5',
   }
 
-  include "froxlor::http"
-  include "froxlor::ftp"
-  include "froxlor::dns"
-  include "froxlor::imap_pop"
+  file { '/var/customers':
+    ensure => directory,
+  }
+  ->
+  class { "froxlor::http": }
+  ->
+  class { "froxlor::ftp": }
+  ->
+  class { "froxlor::dns": }
+  ->
+  class { "froxlor::imap_pop": }
+  ->
+  class { "froxlor::smtp": }
 
 
 }

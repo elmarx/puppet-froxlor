@@ -1,0 +1,8 @@
+user = froxlor
+password = <%= @mysql_froxlor_password %>
+dbname = froxlor
+table = mail_virtual
+select_field = destination
+where_field = email
+additional_conditions = and TRIM(destination) <> ''
+hosts = <%= @mysql_host %>

@@ -1,0 +1,5 @@
+user = froxlor
+password = <%= @mysql_froxlor_password %>
+dbname = froxlor
+query = select distinct username from mail_users where email in ((select mail_virtual.email_full from mail_virtual where mail_virtual.email = '%s' union select mail_virtual.destination from mail_virtual where mail_virtual.email = '%s'));
+hosts = <%= @mysql_host %>

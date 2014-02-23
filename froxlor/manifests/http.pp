@@ -1,9 +1,5 @@
 class froxlor::http inherits froxlor::config {
 
-  file { '/var/customers':
-    ensure => directory,
-  }
-
   file { ['/var/customers/webs', '/var/customers/logs']:
     ensure => directory,
     require => File['/var/customers'],
