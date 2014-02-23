@@ -23,7 +23,7 @@ class froxlor::install inherits froxlor {
     root_password => $mysql_root_password,
   }
 
-  package { ['postfix', 'openbsd-inetd', 'ssl-cert', 'dovecot-imapd', 'dovecot-pop3d', 'php5-gd', 'php5-imap', 'php5-curl', 'bind9', 'curl']: }
+  package { ['postfix', 'openbsd-inetd', 'ssl-cert', 'dovecot-imapd', 'dovecot-pop3d', 'dovecot-mysql', 'php5-gd', 'php5-imap', 'php5-curl', 'bind9', 'curl']: }
 
   package { ['froxlor', 'postfix-mysql']:
     ensure => present,
