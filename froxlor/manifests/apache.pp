@@ -4,7 +4,7 @@ class froxlor::apache inherits froxlor::config {
     ensure => directory,
   }
 
-  file { ['/var/customers/web', '/var/customers/logs']:
+  file { ['/var/customers/webs', '/var/customers/logs']:
     ensure => directory,
     require => File['/var/customers'],
   }
