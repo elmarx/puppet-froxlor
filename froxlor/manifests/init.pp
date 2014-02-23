@@ -35,7 +35,15 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class froxlor {
+class froxlor (
+  $mysql_root_password      = $froxlor::params::mysql_root_password,
+  $mysql_froxlor_password   = $froxlor::params::mysql_froxlor_password,
+  $froxlor_admin_password   = $froxlor::params::froxlor_admin_password
+) inherits froxlor::params {
+  include 'apt'
 
-
+  anchor { 'froxlor::begin': } ->
+  class { '::froxlor::install': } ->
+  class { '::froxlor::config': } ->
+  anchor { 'froxlor::end': }
 }
