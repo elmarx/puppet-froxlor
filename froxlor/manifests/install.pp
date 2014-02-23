@@ -14,7 +14,7 @@ class froxlor::install inherits froxlor {
   ->
   package { 'postfix': }
   ->
-  package { ['froxlor', 'postfix-mysql', 'ssl-cert', 'dovecot-imapd', 'dovecot-pop3d', 'php5-gd', 'php5-imap', 'php5-curl', 'proftpd-mod-mysql', 'bind9']:
+  package { ['froxlor', 'postfix-mysql', 'ssl-cert', 'dovecot-imapd', 'dovecot-pop3d', 'php5-gd', 'php5-imap', 'php5-curl', 'proftpd-mod-mysql', 'bind9', 'curl']:
     ensure => present,
     install_options => '--no-install-recommends',
     require => Apt::Source['froxlor'],

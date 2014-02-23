@@ -36,9 +36,15 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class froxlor (
+  $mysql_host               = $froxlor::params::mysql_host,
   $mysql_root_password      = $froxlor::params::mysql_root_password,
   $mysql_froxlor_password   = $froxlor::params::mysql_froxlor_password,
-  $froxlor_admin_password   = $froxlor::params::froxlor_admin_password
+  $admin_name               = $froxlor::params::admin_name,
+  $admin_password           = $froxlor::params::admin_password,
+  $serverip                 = $froxlor::params::serverip,
+  $servername               = $froxlor::params::servename,
+  $http_user                = $froxlor::params::http_user,
+  $http_group               = $froxlor::params::http_group
 ) inherits froxlor::params {
   include 'apt'
 
