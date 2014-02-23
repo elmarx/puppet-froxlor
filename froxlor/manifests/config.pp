@@ -44,5 +44,9 @@ class froxlor::config inherits froxlor {
   ->
   class { "froxlor::smtp": }
 
+  exec { 'documentroot_use_default_value':
+    command => "/usr/bin/mysql -u froxlor -p${mysql_froxlor_password} froxlor -e \
+    \"update panel_settings set value = 1 where settinggroup = 'system' and varname = 'documentroot_use_default_value'\""
+  }
 
 }

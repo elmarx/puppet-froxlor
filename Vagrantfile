@@ -87,6 +87,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "puppet module install puppetlabs/apache"
   config.vm.provision "shell", inline: "puppet module install puppetlabs/apt"
   config.vm.provision "shell", inline: "puppet module install puppetlabs/mysql"
+  config.vm.provision "shell", inline: "puppet module install runthebusiness/mysqlexec"
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
