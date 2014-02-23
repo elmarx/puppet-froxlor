@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.auto_detect = true
     # If you are using VirtualBox, you might want to enable NFS for shared folders
-    config.cache.enable_nfs  = true
+    # config.cache.enable_nfs  = true
   end
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -86,6 +86,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", inline: "puppet module install puppetlabs/apache"
   config.vm.provision "shell", inline: "puppet module install puppetlabs/apt"
+  config.vm.provision "shell", inline: "puppet module install puppetlabs/mysql"
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
