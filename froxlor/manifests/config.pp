@@ -32,6 +32,7 @@ class froxlor::config inherits froxlor {
 
   include "froxlor::http"
   include "froxlor::ftp"
+  include "froxlor::dns"
 
 
 }
