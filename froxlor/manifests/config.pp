@@ -26,6 +26,12 @@ class froxlor::config inherits froxlor {
 
   include "froxlor::apache"
 
+  cron { 'froxlor':
+      command => '/usr/bin/nice -n 5 /usr/bin/php5 -q /var/www/froxlor/scripts/froxlor_master_cronjob.php',
+      user => 'root',
+      minute => '*/5',
+  }
+
 
 
 
