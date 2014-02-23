@@ -16,7 +16,8 @@ class froxlor::install inherits froxlor {
   ->
   package { ['froxlor', 'postfix-mysql', 'ssl-cert', 'dovecot-imapd', 'dovecot-pop3d', 'php5-gd', 'php5-imap', 'php5-curl', 'proftpd-mod-mysql', 'bind9', 'curl']:
     ensure => present,
-    install_options => '--no-install-recommends',
+    # after https://github.com/puppetlabs/puppet/pull/2082 is merged, the following should work
+    #install_options => '--no-install-recommends',
     require => Apt::Source['froxlor'],
   }
 
