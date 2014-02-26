@@ -1,1 +1,4 @@
-.vagrant
+pkg/
+Gemfile.lock
+.rspec_system/
+.*.sw*
