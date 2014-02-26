@@ -44,7 +44,8 @@ class froxlor (
   $serverip                 = $froxlor::params::serverip,
   $servername               = $froxlor::params::servename,
   $http_user                = $froxlor::params::http_user,
-  $http_group               = $froxlor::params::http_group
+  $http_group               = $froxlor::params::http_group,
+  $phpmyadmin_mysql_password = $froxlor::params::phpmyadmin_mysql_password
 ) inherits froxlor::params {
   include 'apt'
 

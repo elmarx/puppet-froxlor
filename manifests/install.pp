@@ -19,6 +19,26 @@ class froxlor::install inherits froxlor {
     require => [File['/var/cache/debconf/proftpd-basic.preseed'], Package['openbsd-inetd']]
   }
 
+  file { '/var/cache/debconf/phpmyadmin.preseed':
+    ensure => present,
+    content => 'phpmyadmin      phpmyadmin/reconfigure-webserver        multiselect     apache2',
+  }
+
+  file { '/etc/dbconfig-common':
+    ensure => directory,
+  }
+  ->
+  file { '/etc/dbconfig-common/phpmyadmin.conf':
+    ensure => present,
+    content => template('froxlor/phpmyadmin/phpmyadmin.conf.erb'),
+  }
+
+  package { 'phpmyadmin':
+    ensure => present,
+    responsefile => '/var/cache/debconf/phpmyadmin.preseed',
+    require => [File['/var/cache/debconf/phpmyadmin.preseed'], File['/etc/dbconfig-common/phpmyadmin.conf']]
+  }
+
   class { '::mysql::server':
     root_password => $mysql_root_password,
   }
