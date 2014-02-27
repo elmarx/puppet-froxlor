@@ -48,5 +48,9 @@ class froxlor::config inherits froxlor {
     command => "/usr/bin/mysql -u froxlor -p${mysql_froxlor_password} froxlor -e \
     \"update panel_settings set value = 1 where settinggroup = 'system' and varname = 'documentroot_use_default_value'\""
   }
+  exec { 'phpmyadmin_panel_link':
+    command => "/usr/bin/mysql -u froxlor -p${mysql_froxlor_password} froxlor -e \
+    \"update panel_settings set value = 'http://${servername}/phpmyadmin' where settinggroup = 'panel' and varname = 'phpmyadmin_url'\""
+  }
 
 }
