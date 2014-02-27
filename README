@@ -1,16 +1,34 @@
 froxlor
+-------
 
-This is the froxlor module.
+This module install froxlor, a configuration panel for typical PHP-hosting services.
+
+It installs and configures:
+
+- froxlor
+- postfix
+- dovecot
+- proftpd
+- apache2 with modphp
+- phpmyadmin
+- roundcube (webmailer)
+
+It's only tested for debian wheezy, and very opinionated (thus: not very configurable), since froxlor itself is very
+opinionated and this is my very first complete puppet module, and it only covers my usecase.
+
+But I'm open for improvement suggestions/pull requests.
 
 License
 -------
 
+Apache License, Version 2.0
 
 Contact
 -------
 
+elmar@eathmer.org
 
 Support
 -------
 
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+Please log tickets and issues at our [Projects site](http://github.com/zauberpony/puppet-froxlor)
