@@ -62,6 +62,12 @@ class froxlor::config inherits froxlor {
     value => $install_at_root,
   }
 
+  froxlor::setting { 'enable_backups':
+    group => 'system',
+    key => 'backup_enabled',
+    value => $enable_backups,
+  }
+
 
 
 

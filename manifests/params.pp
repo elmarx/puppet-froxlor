@@ -10,4 +10,5 @@ class froxlor::params {
   $http_group = 'www-data'
   $phpmyadmin_mysql_password = 'phpmyadminpassword'
   $install_at_root = true
+  $enable_backups = true
 }
