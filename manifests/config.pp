@@ -68,7 +68,27 @@ class froxlor::config inherits froxlor {
     value => $enable_backups,
   }
 
+  froxlor::setting { 'roundcube_url':
+    group => 'panel',
+    key => 'webmail_url',
+    value => "http://${servername}/roundcube",
+  }
 
+  # set the aliases from /etc/apache2/conf.d/roundcube inside the default vhost
+  augeas { 'roundcube-default-vhost':
+    context => "/files/etc/apache2/sites-available/default/VirtualHost/",
+    changes => [
+      "set directive[last()+1] Alias",
+      "set directive[last()]/arg[1] /roundcube/program/js/tiny_mce/",
+      "set directive[last()]/arg[2] /usr/share/tinymce/www/",
 
+      "set directive[last()+1] Alias",
+      "set directive[last()]/arg[1] /roundcube",
+      "set directive[last()]/arg[2] /var/lib/roundcube",
+    ],
+    onlyif => "match directive[./arg[1] = '/roundcube'] size == 0"
+  }
+  ~>
+  service { 'apache2': }
 
 }

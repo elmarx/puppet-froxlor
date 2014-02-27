@@ -24,23 +24,45 @@ class froxlor::install inherits froxlor {
     content => 'phpmyadmin      phpmyadmin/reconfigure-webserver        multiselect     apache2',
   }
 
+  file { '/var/cache/debconf/roundcube.preseed':
+    ensure => present,
+    content => '
+    roundcube-core  roundcube/hosts string  ssl://localhost:993
+    roundcube-core  roundcube/language      select  de_DE
+    roundcube-core  roundcube/reconfigure-webserver multiselect     apache2
+    ',
+  }
+
   file { '/etc/dbconfig-common':
     ensure => directory,
   }
-  ->
+
   file { '/etc/dbconfig-common/phpmyadmin.conf':
     ensure => present,
     content => template('froxlor/dbconfig-common/phpmyadmin.conf.erb'),
+    require => File['/etc/dbconfig-common'],
   }
 
+  file { '/etc/dbconfig-common/roundcube.conf':
+    ensure => present,
+    content => template('froxlor/dbconfig-common/roundcube.conf.erb'),
+    require => File['/etc/dbconfig-common'],
+  }
+
+  class { '::mysql::server':
+    root_password => $mysql_root_password,
+  }
+  ->
   package { 'phpmyadmin':
     ensure => present,
     responsefile => '/var/cache/debconf/phpmyadmin.preseed',
     require => [File['/var/cache/debconf/phpmyadmin.preseed'], File['/etc/dbconfig-common/phpmyadmin.conf']]
   }
-
-  class { '::mysql::server':
-    root_password => $mysql_root_password,
+  ->
+  package { 'roundcube':
+    ensure => present,
+    responsefile => '/var/cache/debconf/roundcube.preseed',
+    require => [File['/var/cache/debconf/roundcube.preseed'], File['/etc/dbconfig-common/roundcube.conf']]
   }
 
   package { ['postfix', 'openbsd-inetd', 'ssl-cert', 'dovecot-imapd', 'dovecot-pop3d', 'dovecot-mysql', 'php5-gd', 'php5-imap', 'php5-curl', 'bind9', 'curl']: }
