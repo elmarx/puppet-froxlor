@@ -44,13 +44,25 @@ class froxlor::config inherits froxlor {
   ->
   class { "froxlor::smtp": }
 
-  exec { 'documentroot_use_default_value':
-    command => "/usr/bin/mysql -u froxlor -p${mysql_froxlor_password} froxlor -e \
-    \"update panel_settings set value = 1 where settinggroup = 'system' and varname = 'documentroot_use_default_value'\""
+  froxlor::setting { 'documentroot':
+    group => 'system',
+    key => 'documentroot_use_default_value',
+    value => true
   }
-  exec { 'phpmyadmin_panel_link':
-    command => "/usr/bin/mysql -u froxlor -p${mysql_froxlor_password} froxlor -e \
-    \"update panel_settings set value = 'http://${servername}/phpmyadmin' where settinggroup = 'panel' and varname = 'phpmyadmin_url'\""
+
+  froxlor::setting { 'phpmyadmin_url':
+    group => 'panel',
+    key => 'phpmyadmin_url',
+    value => "http://${servername}/phpmyadmin",
   }
+
+  froxlor::setting { 'froxlor_root_directory':
+    group => 'system',
+    key => 'froxlordirectlyviahostname',
+    value => $install_at_root,
+  }
+
+
+
 
 }
