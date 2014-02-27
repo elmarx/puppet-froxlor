@@ -47,7 +47,8 @@ class froxlor (
   $http_group                = $froxlor::params::http_group,
   $phpmyadmin_mysql_password = $froxlor::params::phpmyadmin_mysql_password,
   $install_at_root           = $froxlor::params::install_at_root,
-  $enable_backups            = $froxlor::params::enable_backups
+  $enable_backups            = $froxlor::params::enable_backups,
+  $admin_email               = $froxlor::params::admin_email
 ) inherits froxlor::params {
   include 'apt'
 

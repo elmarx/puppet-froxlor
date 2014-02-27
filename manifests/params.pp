@@ -11,4 +11,5 @@ class froxlor::params {
   $phpmyadmin_mysql_password = 'phpmyadminpassword'
   $install_at_root = true
   $enable_backups = true
+  $admin_email = 'root@localhost'
 }
