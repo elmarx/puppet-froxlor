@@ -42,7 +42,7 @@ class froxlor (
   $admin_name               = $froxlor::params::admin_name,
   $admin_password           = $froxlor::params::admin_password,
   $serverip                 = $froxlor::params::serverip,
-  $servername               = $froxlor::params::servename,
+  $servername               = $froxlor::params::servername,
   $http_user                = $froxlor::params::http_user,
   $http_group               = $froxlor::params::http_group,
   $phpmyadmin_mysql_password = $froxlor::params::phpmyadmin_mysql_password
