@@ -30,7 +30,7 @@ class froxlor::install inherits froxlor {
   ->
   file { '/etc/dbconfig-common/phpmyadmin.conf':
     ensure => present,
-    content => template('froxlor/phpmyadmin/phpmyadmin.conf.erb'),
+    content => template('froxlor/dbconfig-common/phpmyadmin.conf.erb'),
   }
 
   package { 'phpmyadmin':

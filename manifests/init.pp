@@ -45,7 +45,6 @@ class froxlor (
   $servername                = $froxlor::params::servername,
   $http_user                 = $froxlor::params::http_user,
   $http_group                = $froxlor::params::http_group,
-  $phpmyadmin_mysql_password = $froxlor::params::phpmyadmin_mysql_password,
   $install_at_root           = $froxlor::params::install_at_root,
   $enable_backups            = $froxlor::params::enable_backups,
   $admin_email               = $froxlor::params::admin_email
